@@ -267,7 +267,6 @@
 
       <div class="lamp-display-card">
         <div class="lamp-img-container">
-          <!-- THIS LINE LOADS YOUR SPECIFIC IMAGE FROM GITHUB -->
           <img 
             id="lampImage" 
             src="Forever%20Our%20Blessings%20LED%20Keepsake%20Lamp.png" 
@@ -289,11 +288,18 @@
   </div>
 
   <script>
-    // Replace with your WhatsApp number (e.g., 919876543210):
-    const BHARGAV_PHONE = "91XXXXXXXXXX";
-
     let userGiftChoice = "";
     let userExtraChoice = "";
+
+    // The funny reactions for the dodging buttons!
+    const prankResponses = [
+      "Bhargav only! ❤️",
+      "Are you sure? 🥺",
+      "Nice try! 🏃‍♀️",
+      "Think again! 🤨",
+      "Nope! 🚫",
+      "You're stuck with me! 🥰"
+    ];
 
     function goToPage(pageIndex) {
       document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
@@ -328,9 +334,15 @@
     function dodge(buttonId) {
       const btn = document.getElementById(buttonId);
       if (!btn) return;
+      
+      // Move the button randomly
       const x = Math.floor(Math.random() * 220) - 110;
       const y = Math.floor(Math.random() * 120) - 60;
       btn.style.transform = `translate(${x}px, ${y}px)`;
+      
+      // Change the text to a funny reaction!
+      const randomText = prankResponses[Math.floor(Math.random() * prankResponses.length)];
+      btn.innerText = randomText;
     }
 
     function sendWhatsApp() {
