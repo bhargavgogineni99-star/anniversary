@@ -1,43 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Anniversary, Bestie! ✨</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Anniversary, My Queen! ✨</title>
   <style>
     :root {
-      --bg: #ffeef8;
+      --bg-gradient: radial-gradient(circle at 15% 20%, #ffeaf3 0%, #ede9fe 48%, #fef3c7 100%);
       --card-bg: #ffffff;
-      --primary: #ff4d88;
-      --accent: #a370f7;
-      --text: #222;
-      --border: 3px solid #222;
-      --shadow: 5px 5px 0px #222;
+      --text-main: #1f2937;
+      --border-dark: 3px solid #18181b;
+      --shadow-brutal: 5px 5px 0px #18181b;
+      --shadow-brutal-hover: 2px 2px 0px #18181b;
+      --pink: #fda4af;
+      --purple: #d8b4fe;
+      --yellow: #fef08a;
+      --green: #86efac;
     }
 
     * {
       box-sizing: border-box;
-      font-family: 'Courier New', Courier, monospace, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Courier New', Courier, monospace, system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      margin: 0;
-      background: radial-gradient(circle at 20% 20%, #ffe4f0 0%, #e8f0fe 50%, #fef3c7 100%);
-      color: var(--text);
+      background: var(--bg-gradient);
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+      padding: 16px;
+      color: var(--text-main);
     }
 
     .container {
       background: var(--card-bg);
-      border: var(--border);
-      box-shadow: var(--shadow);
-      border-radius: 20px;
-      padding: 30px 25px;
+      border: var(--border-dark);
+      box-shadow: var(--shadow-brutal);
+      border-radius: 24px;
+      padding: 28px 22px;
       max-width: 440px;
       width: 100%;
       text-align: center;
@@ -46,78 +51,131 @@
 
     .badge {
       display: inline-block;
-      background: #fef08a;
-      border: 2px solid #222;
-      padding: 4px 12px;
+      background: var(--yellow);
+      border: 2px solid #18181b;
+      padding: 5px 14px;
       font-weight: 900;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       border-radius: 999px;
-      margin-bottom: 15px;
-      box-shadow: 2px 2px 0px #222;
+      box-shadow: 2px 2px 0px #18181b;
+      margin-bottom: 14px;
+      text-transform: uppercase;
     }
 
     h1 {
-      font-size: 1.8rem;
-      margin: 10px 0;
+      font-size: 1.7rem;
       font-weight: 900;
-      line-height: 1.2;
+      line-height: 1.25;
+      margin-bottom: 8px;
     }
 
     p.subtitle {
       font-size: 0.95rem;
-      color: #555;
-      margin-bottom: 25px;
+      color: #4b5563;
+      margin-bottom: 22px;
+      line-height: 1.4;
     }
 
     .section {
       display: none;
-      animation: fadeIn 0.4s ease;
+      animation: popIn 0.35s ease forwards;
     }
 
     .section.active {
       display: block;
     }
 
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.97) translateY(6px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
     .btn {
-      display: inline-block;
+      display: block;
       width: 100%;
       background: #fff;
-      border: var(--border);
-      box-shadow: 3px 3px 0px #222;
-      border-radius: 12px;
-      padding: 12px;
+      border: var(--border-dark);
+      box-shadow: var(--shadow-brutal);
+      border-radius: 14px;
+      padding: 14px 16px;
       font-size: 1rem;
-      font-weight: bold;
+      font-weight: 800;
       cursor: pointer;
-      margin: 8px 0;
-      transition: all 0.1s ease;
+      margin: 12px 0;
+      transition: all 0.12s ease;
+      text-align: center;
+      line-height: 1.3;
     }
 
     .btn:active {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px #222;
+      transform: translate(3px, 3px);
+      box-shadow: var(--shadow-brutal-hover);
     }
 
-    .btn-pink { background: #fda4af; }
-    .btn-purple { background: #d8b4fe; }
-    .btn-green { background: #86efac; }
-    .btn-yellow { background: #fef08a; }
+    .btn-pink { background: var(--pink); }
+    .btn-purple { background: var(--purple); }
+    .btn-yellow { background: var(--yellow); }
+    .btn-green { background: var(--green); }
 
-    .btn-row {
-      display: flex;
-      gap: 10px;
+    .btn-subtext {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: normal;
+      margin-top: 5px;
+      color: #374151;
+    }
+
+    .prank-box {
       position: relative;
+      min-height: 70px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
       margin-top: 15px;
     }
 
-    #noBtn {
+    .dodge-btn {
       position: relative;
-      transition: all 0.15s ease-out;
+      transition: transform 0.15s ease-out;
+      cursor: pointer;
+      user-select: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Photo Frame Styling */
+    .lamp-display-card {
+      border: var(--border-dark);
+      border-radius: 20px;
+      background: #0f172a;
+      padding: 10px;
+      margin: 18px 0;
+      box-shadow: var(--shadow-brutal);
+    }
+
+    .lamp-img-container {
+      border: 3px solid #fbbf24;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(251, 191, 36, 0.45);
+      background: #000;
+    }
+
+    .lamp-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+
+    .summary-badge {
+      background: #fdf2f8;
+      border: 2px dashed #db2777;
+      padding: 12px;
+      border-radius: 12px;
+      margin: 15px 0;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #831843;
+      white-space: pre-line;
     }
   </style>
 </head>
@@ -125,79 +183,159 @@
 
   <div class="container">
 
-    <!-- STEP 1: WELCOME -->
-    <div id="step-1" class="section active">
-      <div class="badge">🔥 CERTIFIED LOVER BOY/GIRL</div>
+    <!-- PAGE 1: Welcome -->
+    <div id="page-1" class="section active">
+      <div class="badge">🔥 10/10 WIFE SPOTTED</div>
       <h1>Happy Anniversary, Queen 👑</h1>
-      <p class="subtitle">Another 365 days of tolerating me. Zero notes. 10/10 performance.</p>
+      <p class="subtitle">Another year of tolerating me. Zero notes. Masterclass performance.</p>
+      <p style="font-weight: 800; margin-bottom: 8px;">Are you ready for your anniversary surprises?</p>
       
-      <p style="font-weight:bold; margin-top: 25px;">Are you ready for your anniversary rewards?</p>
-      <div class="btn-row">
-        <button class="btn btn-pink" onclick="nextStep(2)">YES OFC 💅</button>
-        <button id="noBtn" class="btn" onmouseover="dodgeNo()" onclick="dodgeNo()">Nah</button>
+      <div class="prank-box">
+        <button class="btn btn-pink" style="flex: 1; margin:0;" onclick="goToPage(2)">YES OFC 💅</button>
+        <button id="dodgeBtn1" class="btn dodge-btn" style="flex: 1; margin:0; background: #e5e7eb;" onmouseover="dodge('dodgeBtn1')" onclick="dodge('dodgeBtn1')">Nah 🙄</button>
       </div>
     </div>
 
-    <!-- STEP 2: GIFT SELECTION -->
-    <div id="step-2" class="section">
+    <!-- PAGE 2: Dinner & Card Options -->
+    <div id="page-2" class="section">
       <div class="badge">🎁 MAIN CHARACTER ENERGY</div>
       <h1>Pick Your Poison 🛍️</h1>
-      <p class="subtitle">Select what you want right now (No refunds, all vibes):</p>
-      
-      <button class="btn btn-pink" onclick="pickGift('Food Coma: Fancy dinner where I don\'t complain about the bill 🍣')">
+      <p class="subtitle">Choose what you want first:</p>
+
+      <button class="btn btn-pink" onclick="selectDinner()">
         🍣 Luxury Dinner & Dessert
+        <span class="btn-subtext">we will go to zeeshan restaurant</span>
       </button>
-      <button class="btn btn-purple" onclick="pickGift('Shopping spree with zero judgment 💳')">
-        💳 Free Reign On Your Credit Card
-      </button>
-      <button class="btn btn-yellow" onclick="pickGift('A weekend getaway (packed and booked by me) ✈️')">
-        ✈️ Spontaneous Weekend Getaway
-      </button>
-      <button class="btn btn-green" onclick="pickGift('Unlimited back scratches & doing chores for a week 💆‍♀️')">
-        💆‍♀️ VIP Backrub + No Chores Week
+
+      <button class="btn btn-purple" onclick="selectCreditCard()">
+        💳 Free Reign On Credit Card
+        <span class="btn-subtext">if you give me unlimited hugs & kisses only</span>
       </button>
     </div>
 
-    <!-- STEP 3: CONFIRMATION -->
-    <div id="step-3" class="section">
-      <div class="badge">💌 LOCKED IN</div>
-      <h1>Order Placed! 🧾</h1>
-      <p class="subtitle">Your selection has been forwarded to management:</p>
-      <div id="selectedGift" style="border: 2px dashed #222; padding: 15px; border-radius: 10px; margin: 20px 0; font-weight: bold; background: #fafafa;"></div>
-      
+    <!-- PAGE 3: Love & Like Verification -->
+    <div id="page-3" class="section">
+      <div class="badge">🚨 MANDATORY SECURITY CHECK</div>
+      <h1 id="loveTitle">Do you love me? 🥺👉👈</h1>
+      <p class="subtitle" id="loveSubtitle">Be completely honest. The system is recording.</p>
+
+      <div id="loveStage" class="prank-box">
+        <button class="btn btn-pink" style="flex: 1; margin:0;" onclick="passLove()">YES ALWAYS ❤️</button>
+        <button id="dodgeBtn2" class="btn dodge-btn" style="flex: 1; margin:0; background: #e5e7eb;" onmouseover="dodge('dodgeBtn2')" onclick="dodge('dodgeBtn2')">Nah 🙅‍♀️</button>
+      </div>
+
+      <div id="likeStage" style="display:none;" class="prank-box">
+        <button class="btn btn-green" style="flex: 1; margin:0;" onclick="goToPage(4)">OBVIOUSLY YES 🥰</button>
+        <button id="dodgeBtn3" class="btn dodge-btn" style="flex: 1; margin:0; background: #e5e7eb;" onmouseover="dodge('dodgeBtn3')" onclick="dodge('dodgeBtn3')">Nah 🏃‍♀️</button>
+      </div>
+    </div>
+
+    <!-- PAGE 4: Pick 1 (Bhargav vs Career) -->
+    <div id="page-4" class="section">
+      <div class="badge">⚖️ THE ULTIMATE CHOICE</div>
+      <h1>Pick Exactly 1 💭</h1>
+      <p class="subtitle">Think very carefully before deciding:</p>
+
+      <button class="btn btn-pink" onclick="goToPage(5)">
+        💍 Spend with Bhargav rest of the life
+        <span class="btn-subtext">(Easiest decision of your life ✨)</span>
+      </button>
+
+      <div style="position: relative; height: 75px; margin-top: 10px;">
+        <button id="dodgeBtn4" class="btn dodge-btn" style="background:#e5e7eb; width: 100%; position: absolute; left: 0; top: 0;" onmouseover="dodge('dodgeBtn4')" onclick="dodge('dodgeBtn4')">
+          💼 Career Importance
+        </button>
+      </div>
+    </div>
+
+    <!-- PAGE 5: 2 More Surprises -->
+    <div id="page-5" class="section">
+      <div class="badge">👟 👗 🍕 UNLOCKED</div>
+      <h1>Jokes Apart! 😂</h1>
+      <p class="subtitle">Finally 2 more surprises. Select the one which you prefer right now:</p>
+
+      <button class="btn btn-yellow" onclick="pickPreference('👠 Shoes')">👠 Shoes</button>
+      <button class="btn btn-purple" onclick="pickPreference('🛍️ Shopping')">🛍️ Shopping</button>
+      <button class="btn btn-green" onclick="pickPreference('🍕 Food')">🍕 Food</button>
+    </div>
+
+    <!-- PAGE 6: Final Keepsake Lamp Reveal -->
+    <div id="page-6" class="section">
+      <div class="badge">🌟 FOREVER OUR BLESSINGS</div>
+      <h1>The Lifelong Surprise 💛</h1>
+      <p class="subtitle">This is to remember for a lifetime with your beloved grandparents' blessings:</p>
+
+      <div class="lamp-display-card">
+        <div class="lamp-img-container">
+          <!-- THIS LINE LOADS YOUR SPECIFIC IMAGE FROM GITHUB -->
+          <img 
+            id="lampImage" 
+            src="Forever%20Our%20Blessings%20LED%20Keepsake%20Lamp.png" 
+            alt="Forever Our Blessings LED Keepsake Lamp" 
+            class="lamp-img"
+          />
+        </div>
+      </div>
+
+      <div class="summary-badge" id="finalSelectionText">
+        🎁 Selected Preference: Shopping
+      </div>
+
       <button class="btn btn-pink" onclick="sendWhatsApp()">
-        Send My Request via WhatsApp 💬
+        Lock It In & Send to Bhargav 💬
       </button>
     </div>
 
   </div>
 
   <script>
-    let chosenOption = "";
+    // Replace with your WhatsApp number (e.g., 919876543210):
+    const BHARGAV_PHONE = "91XXXXXXXXXX";
 
-    function nextStep(stepNumber) {
+    let userGiftChoice = "";
+    let userExtraChoice = "";
+
+    function goToPage(pageIndex) {
       document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
-      document.getElementById('step-' + stepNumber).classList.add('active');
+      const target = document.getElementById('page-' + pageIndex);
+      if (target) target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function dodgeNo() {
-      const btn = document.getElementById('noBtn');
-      const randomX = Math.floor(Math.random() * 200) - 100;
-      const randomY = Math.floor(Math.random() * 120) - 60;
-      btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    function selectDinner() {
+      userGiftChoice = "Luxury Dinner & Dessert at Zeeshan Restaurant";
+      goToPage(3);
     }
 
-    function pickGift(choice) {
-      chosenOption = choice;
-      document.getElementById('selectedGift').innerText = choice;
-      nextStep(3);
+    function selectCreditCard() {
+      userGiftChoice = "Free Reign On Credit Card (if you give me unlimited hugs & kisses only)";
+      goToPage(3);
+    }
+
+    function passLove() {
+      document.getElementById('loveTitle').innerText = "Do you like me? 🥰";
+      document.getElementById('loveSubtitle').innerText = "Okay good... but do you actually LIKE me though?";
+      document.getElementById('loveStage').style.display = 'none';
+      document.getElementById('likeStage').style.display = 'flex';
+    }
+
+    function pickPreference(choice) {
+      userExtraChoice = choice;
+      document.getElementById('finalSelectionText').innerText = `✨ Chosen Gift: ${userGiftChoice}\n🛍️ Top Pick: ${userExtraChoice}`;
+      goToPage(6);
+    }
+
+    function dodge(buttonId) {
+      const btn = document.getElementById(buttonId);
+      if (!btn) return;
+      const x = Math.floor(Math.random() * 220) - 110;
+      const y = Math.floor(Math.random() * 120) - 60;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     function sendWhatsApp() {
-      // Replace with your country code + phone number (e.g., 919876543210 for India)
-      const myPhoneNumber = "918179567807"; 
-      const text = encodeURIComponent(`Happy Anniversary! 💖 I claimed my gift: "${chosenOption}". You cannot take it back!`);
-      window.open(`https://wa.me/${myPhoneNumber}?text=${text}`, '_blank');
+      const message = `Happy Anniversary my love! 💖\n\nI just claimed my anniversary package:\n1. ${userGiftChoice}\n2. Top Pick: ${userExtraChoice}\n\nAnd I loved the Keepsake Lamp surprise with my grandparents! 🥹✨`;
+      window.open(`https://wa.me/918179567807?text=${encodeURIComponent(message)}`, '_blank');
     }
   </script>
 </body>
