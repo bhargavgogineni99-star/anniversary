@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Anniversary, Bestie! ✨</title>
+  <style>
+    :root {
+      --bg: #ffeef8;
+      --card-bg: #ffffff;
+      --primary: #ff4d88;
+      --accent: #a370f7;
+      --text: #222;
+      --border: 3px solid #222;
+      --shadow: 5px 5px 0px #222;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Courier New', Courier, monospace, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 20% 20%, #ffe4f0 0%, #e8f0fe 50%, #fef3c7 100%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: var(--card-bg);
+      border: var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 30px 25px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #fef08a;
+      border: 2px solid #222;
+      padding: 4px 12px;
+      font-weight: 900;
+      font-size: 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 15px;
+      box-shadow: 2px 2px 0px #222;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin: 10px 0;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    p.subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      background: #fff;
+      border: var(--border);
+      box-shadow: 3px 3px 0px #222;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 8px 0;
+      transition: all 0.1s ease;
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px #222;
+    }
+
+    .btn-pink { background: #fda4af; }
+    .btn-purple { background: #d8b4fe; }
+    .btn-green { background: #86efac; }
+    .btn-yellow { background: #fef08a; }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      position: relative;
+      margin-top: 15px;
+    }
+
+    #noBtn {
+      position: relative;
+      transition: all 0.15s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- STEP 1: WELCOME -->
+    <div id="step-1" class="section active">
+      <div class="badge">🔥 CERTIFIED LOVER BOY/GIRL</div>
+      <h1>Happy Anniversary, Queen 👑</h1>
+      <p class="subtitle">Another 365 days of tolerating me. Zero notes. 10/10 performance.</p>
+      
+      <p style="font-weight:bold; margin-top: 25px;">Are you ready for your anniversary rewards?</p>
+      <div class="btn-row">
+        <button class="btn btn-pink" onclick="nextStep(2)">YES OFC 💅</button>
+        <button id="noBtn" class="btn" onmouseover="dodgeNo()" onclick="dodgeNo()">Nah</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: GIFT SELECTION -->
+    <div id="step-2" class="section">
+      <div class="badge">🎁 MAIN CHARACTER ENERGY</div>
+      <h1>Pick Your Poison 🛍️</h1>
+      <p class="subtitle">Select what you want right now (No refunds, all vibes):</p>
+      
+      <button class="btn btn-pink" onclick="pickGift('Food Coma: Fancy dinner where I don\'t complain about the bill 🍣')">
+        🍣 Luxury Dinner & Dessert
+      </button>
+      <button class="btn btn-purple" onclick="pickGift('Shopping spree with zero judgment 💳')">
+        💳 Free Reign On Your Credit Card
+      </button>
+      <button class="btn btn-yellow" onclick="pickGift('A weekend getaway (packed and booked by me) ✈️')">
+        ✈️ Spontaneous Weekend Getaway
+      </button>
+      <button class="btn btn-green" onclick="pickGift('Unlimited back scratches & doing chores for a week 💆‍♀️')">
+        💆‍♀️ VIP Backrub + No Chores Week
+      </button>
+    </div>
+
+    <!-- STEP 3: CONFIRMATION -->
+    <div id="step-3" class="section">
+      <div class="badge">💌 LOCKED IN</div>
+      <h1>Order Placed! 🧾</h1>
+      <p class="subtitle">Your selection has been forwarded to management:</p>
+      <div id="selectedGift" style="border: 2px dashed #222; padding: 15px; border-radius: 10px; margin: 20px 0; font-weight: bold; background: #fafafa;"></div>
+      
+      <button class="btn btn-pink" onclick="sendWhatsApp()">
+        Send My Request via WhatsApp 💬
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    let chosenOption = "";
+
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.section').forEach(el => el.classList.remove('active'));
+      document.getElementById('step-' + stepNumber).classList.add('active');
+    }
+
+    function dodgeNo() {
+      const btn = document.getElementById('noBtn');
+      const randomX = Math.floor(Math.random() * 200) - 100;
+      const randomY = Math.floor(Math.random() * 120) - 60;
+      btn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    function pickGift(choice) {
+      chosenOption = choice;
+      document.getElementById('selectedGift').innerText = choice;
+      nextStep(3);
+    }
+
+    function sendWhatsApp() {
+      // Replace with your country code + phone number (e.g., 919876543210 for India)
+      const myPhoneNumber = "918179567807"; 
+      const text = encodeURIComponent(`Happy Anniversary! 💖 I claimed my gift: "${chosenOption}". You cannot take it back!`);
+      window.open(`https://wa.me/${myPhoneNumber}?text=${text}`, '_blank');
+    }
+  </script>
+</body>
+</html>
